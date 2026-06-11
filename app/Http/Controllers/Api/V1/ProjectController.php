@@ -42,6 +42,7 @@ class ProjectController extends Controller
         }
 
         $projects = $query
+            ->withCount('tasks')
             ->orderBy($column, $direction)
             ->paginate((int) ($filters['per_page'] ?? 15));
 

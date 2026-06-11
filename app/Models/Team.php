@@ -42,6 +42,14 @@ class Team extends Model
     }
 
     /**
+     * @return HasMany<Notification, $this>
+     */
+    public function notifications(): HasMany
+    {
+        return $this->hasMany(Notification::class);
+    }
+
+    /**
      * @return BelongsToMany<User, $this, TeamUser>
      */
     public function members(): BelongsToMany

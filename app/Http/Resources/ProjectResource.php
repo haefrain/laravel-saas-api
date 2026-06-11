@@ -28,6 +28,7 @@ class ProjectResource extends JsonResource
             'slug' => $project->slug,
             'description' => $project->description,
             'status' => $project->status->value,
+            'tasks_count' => $this->whenCounted('tasks'),
             'created_at' => $project->created_at?->toIso8601String(),
             'updated_at' => $project->updated_at?->toIso8601String(),
         ];
