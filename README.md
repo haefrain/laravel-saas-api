@@ -32,6 +32,14 @@ cp .env.example .env
 
 The API is served at `http://localhost:8081`.
 
+### API reference
+
+```bash
+./vendor/bin/sail artisan scribe:generate
+```
+
+Interactive docs at `http://localhost:8081/docs` (plus a Postman collection and an OpenAPI 3 spec under `storage/app/private/scribe/`).
+
 ## Roadmap
 
 - [x] **L1** — Scaffold, Sail, tooling (Pint, Larastan, Pest), CI
@@ -39,7 +47,7 @@ The API is served at `http://localhost:8081`.
 - [x] **L3** — Teams, multi-tenancy & spatie roles/permissions
 - [x] **L4** — Projects (CRUD, policies, resources, requests)
 - [x] **L5** — Tasks, assignment & status, queued events
-- [ ] **L6** — API versioning, rate limiting, error handling, Scribe docs
+- [x] **L6** — API versioning, rate limiting, error handling, Scribe docs
 - [ ] **L7** — Production Docker image, architecture docs & ADRs
 
 ## License
