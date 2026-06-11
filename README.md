@@ -35,7 +35,7 @@ The API is served at `http://localhost:8081`.
 ## Roadmap
 
 - [x] **L1** — Scaffold, Sail, tooling (Pint, Larastan, Pest), CI
-- [ ] **L2** — Sanctum authentication + users
+- [x] **L2** — Sanctum authentication + users
 - [ ] **L3** — Teams, multi-tenancy & spatie roles/permissions
 - [ ] **L4** — Projects (CRUD, policies, resources, requests)
 - [ ] **L5** — Tasks, assignment & status, queued events
