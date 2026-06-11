@@ -11,8 +11,8 @@ it('returns the authenticated user from /me', function () {
 
     $this->getJson('/api/v1/me')
         ->assertOk()
-        ->assertJsonPath('id', $user->id)
-        ->assertJsonPath('email', $user->email);
+        ->assertJsonPath('data.id', $user->id)
+        ->assertJsonPath('data.email', $user->email);
 });
 
 it('rejects /me without a token', function () {
