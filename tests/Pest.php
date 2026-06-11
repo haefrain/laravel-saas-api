@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 /*
@@ -9,10 +10,12 @@ use Tests\TestCase;
 | Test Case
 |--------------------------------------------------------------------------
 |
-| Feature tests boot the full framework via Tests\TestCase. RefreshDatabase
-| is applied per suite where database state matters (see the auth/resource
-| feature tests) so pure HTTP checks stay fast.
+| Feature tests boot the full framework via Tests\TestCase and run against a
+| transactional, freshly-migrated MySQL "testing" database (RefreshDatabase),
+| so every test starts from a clean, isolated state.
 |
 */
 
-pest()->extend(TestCase::class)->in('Feature');
+pest()->extend(TestCase::class)
+    ->use(RefreshDatabase::class)
+    ->in('Feature');
