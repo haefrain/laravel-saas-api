@@ -19,6 +19,11 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Http\Response;
 
+/**
+ * @group Projects
+ *
+ * Team-scoped projects. Requires membership of {team}; mutations require an owner/admin role.
+ */
 class ProjectController extends Controller
 {
     public function index(IndexProjectRequest $request, Team $team): AnonymousResourceCollection

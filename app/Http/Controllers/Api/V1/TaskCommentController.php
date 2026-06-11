@@ -18,6 +18,11 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Http\Response;
 
+/**
+ * @group Task comments
+ *
+ * Comments on a task. Authorship is server-set; members can delete only their own comments.
+ */
 class TaskCommentController extends Controller
 {
     public function index(Request $request, Team $team, Project $project, Task $task): AnonymousResourceCollection

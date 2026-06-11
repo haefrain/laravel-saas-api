@@ -24,6 +24,11 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Http\Response;
 
+/**
+ * @group Tasks
+ *
+ * Tasks nested under a project. Status changes go through POST .../transition (state machine) and assignment through PUT .../assignee.
+ */
 class TaskController extends Controller
 {
     public function index(IndexTaskRequest $request, Team $team, Project $project): AnonymousResourceCollection

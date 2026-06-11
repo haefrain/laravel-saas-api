@@ -16,6 +16,11 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Http\Response;
 
+/**
+ * @group Teams
+ *
+ * Create and manage teams (tenants). All nested resources are scoped by the {team} route segment.
+ */
 class TeamController extends Controller
 {
     public function index(Request $request): AnonymousResourceCollection

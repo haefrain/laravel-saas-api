@@ -28,3 +28,8 @@ Thumbs.db
 
 # internal design blueprint (agent-generated reference); real docs in README + docs/adr
 docs/_blueprint.md
+
+# Scribe generated artifacts (regenerate with: sail artisan scribe:generate)
+/.scribe
+/public/vendor/scribe
+/resources/views/scribe

@@ -16,8 +16,18 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
+/**
+ * @group Authentication
+ *
+ * Register, log in and manage the current token session.
+ */
 class AuthController extends Controller
 {
+    /**
+     * Register
+     *
+     * @unauthenticated
+     */
     public function register(RegisterRequest $request, RegisterUser $action): JsonResponse
     {
         /** @var array{name: string, email: string, password: string} $data */
@@ -27,6 +37,11 @@ class AuthController extends Controller
         return $this->tokenResponse($user, Response::HTTP_CREATED);
     }
 
+    /**
+     * Log in
+     *
+     * @unauthenticated
+     */
     public function login(LoginRequest $request): JsonResponse
     {
         $email = (string) $request->validated('email');

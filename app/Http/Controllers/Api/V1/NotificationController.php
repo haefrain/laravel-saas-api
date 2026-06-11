@@ -12,6 +12,11 @@ use App\Models\Team;
 use App\Models\User;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
+/**
+ * @group Notifications
+ *
+ * The caller's own notification feed. Object-level owned: no team role can read another member's notifications.
+ */
 class NotificationController extends Controller
 {
     public function index(IndexNotificationRequest $request, Team $team): AnonymousResourceCollection
