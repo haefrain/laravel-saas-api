@@ -6,9 +6,9 @@ namespace App\Actions\Tasks;
 
 use App\Enums\TaskStatus;
 use App\Events\TaskStatusChanged;
+use App\Exceptions\InvalidTaskTransitionException;
 use App\Models\Task;
 use App\Models\User;
-use Illuminate\Validation\ValidationException;
 
 class TransitionTaskStatusAction
 {
@@ -17,19 +17,7 @@ class TransitionTaskStatusAction
         $from = $task->status;
 
         if (! $from->canTransitionTo($to)) {
-            $allowed = array_map(
-                static fn (TaskStatus $status): string => $status->value,
-                $from->allowedTransitions(),
-            );
-
-            throw ValidationException::withMessages([
-                'status' => sprintf(
-                    'Cannot transition from %s to %s. Allowed: %s.',
-                    $from->value,
-                    $to->value,
-                    implode(', ', $allowed),
-                ),
-            ]);
+            throw new InvalidTaskTransitionException($from, $to);
         }
 
         $task->status = $to;
