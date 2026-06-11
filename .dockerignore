@@ -1,0 +1,37 @@
+# Secrets must never enter the image
+.env
+.env.*
+
+.git
+.github
+.gitignore
+.gitattributes
+
+vendor
+node_modules
+
+tests
+phpunit.xml
+phpstan.neon
+pint.json
+
+docs
+.scribe
+public/vendor/scribe
+resources/views/scribe
+
+storage/logs/*
+storage/framework/cache/data/*
+storage/framework/sessions/*
+storage/framework/views/*
+
+# Host-generated framework caches reference dev-only packages (e.g. Scribe's
+# provider in packages.php); the entrypoint rebuilds them inside the container.
+bootstrap/cache/*
+
+compose.yaml
+compose.prod.yaml
+Dockerfile
+.dockerignore
+README.md
+README.es.md
