@@ -32,6 +32,7 @@ class TeamResource extends JsonResource
             'slug' => $team->slug,
             'role' => $role?->value,
             'members_count' => $this->whenCounted('members'),
+            'projects_count' => $this->whenCounted('projects'),
             'created_at' => $team->created_at?->toIso8601String(),
         ];
     }

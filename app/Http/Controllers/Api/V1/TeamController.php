@@ -23,7 +23,7 @@ class TeamController extends Controller
         /** @var User $user */
         $user = $request->user();
 
-        $teams = $user->teams()->withCount('members')->orderBy('name')->get();
+        $teams = $user->teams()->withCount(['members', 'projects'])->orderBy('name')->get();
 
         return TeamResource::collection($teams);
     }

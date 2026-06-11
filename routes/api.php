@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\Api\V1\Auth\AuthController;
+use App\Http\Controllers\Api\V1\ProjectController;
 use App\Http\Controllers\Api\V1\TeamController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,11 +22,15 @@ Route::prefix('v1')->group(function () {
         Route::get('teams', [TeamController::class, 'index']);
         Route::post('teams', [TeamController::class, 'store']);
 
-        // Team-scoped: the tenant middleware gates membership and sets context.
-        Route::middleware('tenant')->group(function () {
+        // Team-scoped: the tenant middleware gates membership and sets context;
+        // scoped bindings resolve nested children through the team's relation,
+        // so a cross-team child id 404s at the router.
+        Route::middleware('tenant')->scopeBindings()->group(function () {
             Route::get('teams/{team}', [TeamController::class, 'show']);
             Route::patch('teams/{team}', [TeamController::class, 'update']);
             Route::delete('teams/{team}', [TeamController::class, 'destroy']);
+
+            Route::apiResource('teams.projects', ProjectController::class);
         });
     });
 });
