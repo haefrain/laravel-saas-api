@@ -37,7 +37,7 @@ La API se sirve en `http://localhost:8081`.
 - [x] **L1** — Scaffold, Sail, tooling (Pint, Larastan, Pest), CI
 - [x] **L2** — Autenticación Sanctum + usuarios
 - [x] **L3** — Teams, multi-tenancy y roles/permisos spatie
-- [ ] **L4** — Proyectos (CRUD, policies, resources, requests)
+- [x] **L4** — Proyectos (CRUD, policies, resources, requests)
 - [ ] **L5** — Tareas, asignación y estados, eventos en cola
 - [ ] **L6** — Versionado de API, rate limiting, manejo de errores, docs Scribe
 - [ ] **L7** — Imagen Docker de producción, docs de arquitectura y ADRs
