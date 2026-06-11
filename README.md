@@ -38,7 +38,7 @@ The API is served at `http://localhost:8081`.
 - [x] **L2** — Sanctum authentication + users
 - [x] **L3** — Teams, multi-tenancy & spatie roles/permissions
 - [x] **L4** — Projects (CRUD, policies, resources, requests)
-- [ ] **L5** — Tasks, assignment & status, queued events
+- [x] **L5** — Tasks, assignment & status, queued events
 - [ ] **L6** — API versioning, rate limiting, error handling, Scribe docs
 - [ ] **L7** — Production Docker image, architecture docs & ADRs
 
