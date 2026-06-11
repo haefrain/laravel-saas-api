@@ -55,7 +55,10 @@ it('rejects the todo to done skip with the allowed edges', function () {
 
     $this->postJson(transitionUrl($team, $project, $task), ['status' => 'done'])
         ->assertUnprocessable()
-        ->assertJsonValidationErrors(['status']);
+        ->assertJsonPath('error.code', 'invalid_transition')
+        ->assertJsonPath('error.details.from', 'todo')
+        ->assertJsonPath('error.details.to', 'done')
+        ->assertJsonPath('error.details.allowed_transitions', ['in_progress', 'cancelled']);
 
     expect($task->refresh()->status)->toBe(TaskStatus::Todo);
 });
