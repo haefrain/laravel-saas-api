@@ -3,7 +3,10 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\Api\V1\Auth\AuthController;
+use App\Http\Controllers\Api\V1\NotificationController;
 use App\Http\Controllers\Api\V1\ProjectController;
+use App\Http\Controllers\Api\V1\TaskCommentController;
+use App\Http\Controllers\Api\V1\TaskController;
 use App\Http\Controllers\Api\V1\TeamController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +34,16 @@ Route::prefix('v1')->group(function () {
             Route::delete('teams/{team}', [TeamController::class, 'destroy']);
 
             Route::apiResource('teams.projects', ProjectController::class);
+
+            Route::apiResource('teams.projects.tasks', TaskController::class);
+            Route::put('teams/{team}/projects/{project}/tasks/{task}/assignee', [TaskController::class, 'assign']);
+            Route::post('teams/{team}/projects/{project}/tasks/{task}/transition', [TaskController::class, 'transition']);
+
+            Route::apiResource('teams.projects.tasks.comments', TaskCommentController::class)
+                ->only(['index', 'store', 'destroy']);
+
+            Route::get('teams/{team}/notifications', [NotificationController::class, 'index']);
+            Route::patch('teams/{team}/notifications/{notification}/read', [NotificationController::class, 'markRead']);
         });
     });
 });
